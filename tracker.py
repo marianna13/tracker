@@ -22,7 +22,7 @@ class Tracker:
 
     def update(self, item: str, status: str):
         res = requests.put(
-            self.url+f"item",
+            self.url+"item",
             headers={
                 "accept": "application/json",
                 "Content-Type": "application/json"
@@ -51,7 +51,7 @@ class Tracker:
     
     def delete(self, item):
         res = requests.delete(
-            self.url+f"item",
+            self.url+"item",
             headers={
                 "accept": "application/json",
                 "Content-Type": "application/json"
