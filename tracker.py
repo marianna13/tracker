@@ -22,12 +22,13 @@ class Tracker:
 
     def update(self, item: str, status: str):
         res = requests.put(
-            self.url+f"item/{item}",
+            self.url+f"item",
             headers={
                 "accept": "application/json",
                 "Content-Type": "application/json"
             },
             params={
+                'id': item,
                 'status': status
             }
         )
@@ -35,7 +36,10 @@ class Tracker:
 
     def get_item(self, item):
         res = requests.get(
-            self.url+f"items/{item}",
+            self.url+"item",
+            params={
+                'id': item
+            }
         )
         return res.status_code == 200
 
@@ -44,3 +48,17 @@ class Tracker:
             self.url+"items",
         )
         return res.json()
+    
+    def delete(self, item):
+        res = requests.delete(
+            self.url+f"item",
+            headers={
+                "accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            params={
+                'id': item
+            }
+        )
+        # print(res)
+        return res.status_code == 204
