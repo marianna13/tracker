@@ -22,7 +22,7 @@ def root():
     return "works"
 
 
-@app.get("/items/{id}")
+@app.get("/item")
 def read_item(id: str):
 
     # create a new database session
@@ -37,7 +37,7 @@ def read_item(id: str):
     return f"item item with id: {item.id} and status: {item.status}"
 
 
-@app.put("/item/{id}")
+@app.put("/item")
 def update_item(id: str, status: str):
 
     # create a new database session
@@ -62,7 +62,7 @@ def update_item(id: str, status: str):
     return item
 
 
-@app.delete("/item/{id}", status_code=status.HTTP_204_NO_CONTENT)
+@app.delete("/item", status_code=status.HTTP_204_NO_CONTENT)
 def delete_item(id: str):
 
     # create a new database session
