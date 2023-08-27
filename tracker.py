@@ -1,4 +1,5 @@
 import requests
+import random
 
 
 class Tracker:
@@ -49,6 +50,13 @@ class Tracker:
         )
         return res.json()
     
+    def get_random_item(self):
+        '''
+        Get random item with status "not processed"
+        '''
+        not_processed = [item for item in self.get_all_items() if item['status'] == 'not processed']
+        return random.choice(not_processed)
+
     def delete(self, item):
         res = requests.delete(
             self.url+"item",
