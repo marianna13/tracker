@@ -20,7 +20,11 @@ client.add(item='s3://commoncrawl/crawl-data/CC-MAIN-2023-23', status='processin
 
 print(client.get_item('s3://commoncrawl/crawl-data/CC-MAIN-2023-23')) # True
 
+# Get random item:
+
+item = client.get_random_item()
+
 # Update status:
 
-client.update(item='s3://commoncrawl/crawl-data/CC-MAIN-2023-23', status='completed')
+client.update(item=item['id']', status='processing')
 ```
